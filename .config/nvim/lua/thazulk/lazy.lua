@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
@@ -34,7 +34,7 @@ local plugins = {
         name = 'rose-pine'
     },
     --Gruvbox theme
-    { "ellisonleao/gruvbox.nvim" },
+    { "ellisonleao/gruvbox.nvim", priority = 1 },
     --One Monokai theme
     { 'cpea2506/one_monokai.nvim' },
     {
@@ -79,19 +79,13 @@ local plugins = {
         'nvim-lualine/lualine.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
     },
-    -- add this to your lua/plugins.lua, lua/plugins/init.lua,  or the file you keep your other plugins:
     {
         'numToStr/Comment.nvim',
-        opts = {
-            -- add any options here
-        },
         lazy = false,
     },
 
     'ThePrimeagen/vim-be-good',
     'lewis6991/gitsigns.nvim',
-    -- Useful plugin to show you pending keybinds.
-    -- Lua
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -99,13 +93,30 @@ local plugins = {
             vim.o.timeout = true
             vim.o.timeoutlen = 300
         end,
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
     },
     'tpope/vim-surround',
     'RRethy/vim-illuminate',
-    { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' } }
+    { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
+    -- {
+    --     "nvim-tree/nvim-tree.lua",
+    --     version = "*",
+    --     lazy = false,
+    --     dependencies = {
+    --         "nvim-tree/nvim-web-devicons",
+    --     },
+    --     config = function()
+    --         require("nvim-tree").setup {}
+    --     end,
+    -- }
+
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {} -- this is equalent to setup({}) function
+    },
+    'petertriho/nvim-scrollbar'
+
+}
+
+
 require("lazy").setup(plugins, {})

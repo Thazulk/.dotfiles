@@ -5,13 +5,24 @@ lsp.preset("recommended")
 lsp.ensure_installed({
     'tsserver',
     'rust_analyzer',
+    'volar',
+    'gopls'
 })
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
 
+local luasnip = require 'luasnip'
+
+luasnip.filetype_extend("vue", { "vue" })
+
 local cmp = require('cmp')
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -78,6 +89,10 @@ lsp.on_attach(function(_, bufnr)
     --     vim.lsp.buf.format()
     -- end, { desc = 'Format current buffer with LSP' })
 end)
+
+require 'lspconfig'.volar.setup {
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+}
 
 
 

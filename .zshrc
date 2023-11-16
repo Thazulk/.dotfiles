@@ -113,9 +113,13 @@ export VISUAL=/usr/bin/vim
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export PATH=$HOME/.local/scripts:$PATH
 
-bindkey -s '^f' 'nvim $(fzf)^M'
+# bindkey -s '^f' 'nvim $(fzf)^M'
+bindkey -s ^f "tmux-sessionizer\n"
 
 PROMT='%F{blue}%n%f@%F{red}%m%f %F{green}%~%f %# '
 PROMPT='%{$fg[yellow]%}[%*] '$PROMPT
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

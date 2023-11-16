@@ -18,17 +18,28 @@ local luasnip = require 'luasnip'
 luasnip.filetype_extend("vue", { "vue" })
 
 local cmp = require('cmp')
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
+-- local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+-- cmp.event:on(
+--     'confirm_done',
+--     cmp_autopairs.on_confirm_done()
+-- )
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),     -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<S-CR>"] = cmp.mapping.confirm({
+        behavior = cmp.ConfirmBehavior.Replace,
+        select = true,
+    }),     -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ["<C-CR>"] = function(fallback)
+        cmp.abort()
+        fallback()
+    end,
 })
 
 cmp_mappings['<Tab>'] = nil

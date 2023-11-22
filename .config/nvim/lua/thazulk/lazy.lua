@@ -15,7 +15,7 @@ local plugins = {
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { { 'nvim-lua/plenary.nvim' },
-        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+            { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
         }
     },
     --Rosé-pine theme
@@ -48,15 +48,15 @@ local plugins = {
     'mbbill/undotree',
     'tpope/vim-fugitive',
     "nvim-treesitter/nvim-treesitter-context",
-{'williamboman/mason.nvim'},
-{'williamboman/mason-lspconfig.nvim'},
-{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-{'neovim/nvim-lspconfig'},
-{'hrsh7th/cmp-nvim-lsp'},
-{'hrsh7th/nvim-cmp'},
-{ "hrsh7th/cmp-buffer" },
-{ "hrsh7th/cmp-path" },
-{ 'L3MON4D3/LuaSnip' }, -- Required
+    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason-lspconfig.nvim' },
+    { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
+    { 'neovim/nvim-lspconfig' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/nvim-cmp' },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
+    { 'L3MON4D3/LuaSnip' }, -- Required
     -- {
     --     'VonHeikemen/lsp-zero.nvim',
     --     branch = 'v2.x',
@@ -195,22 +195,31 @@ local plugins = {
             })
         end,
     },
-    -- lazy.nvim
-{
-  "folke/noice.nvim",
-  event = "VeryLazy",
-  opts = {
-    -- add any options here
-  },
-  dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim",
-    -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify",
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        }
+    },
+    {
+        "nvim-pack/nvim-spectre",
+        build = false,
+        cmd = "Spectre",
+        opts = { open_cmd = "noswapfile vnew" },
+        -- stylua: ignore
+        keys = {
+            { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
+        },
     }
-}
 
 }
 

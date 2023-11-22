@@ -101,7 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias fe-up="docker-compose -f docker-compose-dev.yml up"
+alias fe-up="docker compose -f docker-compose-dev.yml up"
 alias nvimcfg="cd ~/.config/nvim"
 alias vim="nvim ."
 export NVM_DIR="$HOME/.nvm"

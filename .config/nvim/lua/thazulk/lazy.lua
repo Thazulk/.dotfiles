@@ -15,15 +15,7 @@ local plugins = {
     {
         'nvim-telescope/telescope.nvim',
         dependencies = { { 'nvim-lua/plenary.nvim' },
-            {
-                'nvim-telescope/telescope-fzf-native.nvim',
-                -- NOTE: If you are having trouble with this installation,
-                --       refer to the README for telescope-fzf-native for more instructions.
-                build = 'make',
-                cond = function()
-                    return vim.fn.executable 'make' == 1
-                end,
-            },
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
         }
     },
     --Rosé-pine theme
@@ -56,23 +48,29 @@ local plugins = {
     'mbbill/undotree',
     'tpope/vim-fugitive',
     "nvim-treesitter/nvim-treesitter-context",
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        dependencies = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },             -- Required
-            { 'williamboman/mason.nvim' },           -- Optional
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { "hrsh7th/cmp-buffer" },
-            { "hrsh7th/cmp-path" },
-            { 'L3MON4D3/LuaSnip' }, -- Required
-        }
-    },
+{'williamboman/mason.nvim'},
+{'williamboman/mason-lspconfig.nvim'},
+{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+{'neovim/nvim-lspconfig'},
+{'hrsh7th/cmp-nvim-lsp'},
+{'hrsh7th/nvim-cmp'},
+{ "hrsh7th/cmp-buffer" },
+{ "hrsh7th/cmp-path" },
+{ 'L3MON4D3/LuaSnip' }, -- Required
+    -- {
+    --     'VonHeikemen/lsp-zero.nvim',
+    --     branch = 'v2.x',
+    --     dependencies = {
+    --         -- LSP Support
+    --         { 'neovim/nvim-lspconfig' },             -- Required
+    --         { 'williamboman/mason.nvim' },           -- Optional
+    --         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+    --
+    --         -- Autocompletion
+    --         { 'hrsh7th/nvim-cmp' },     -- Required
+    --         { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+    --     }
+    -- },
 
     "github/copilot.vim",
     {
@@ -196,7 +194,23 @@ local plugins = {
                 end,
             })
         end,
+    },
+    -- lazy.nvim
+{
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- add any options here
+  },
+  dependencies = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL:
+    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --   If not available, we use `mini` as the fallback
+    "rcarriga/nvim-notify",
     }
+}
 
 }
 

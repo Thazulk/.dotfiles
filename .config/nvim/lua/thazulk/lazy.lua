@@ -36,13 +36,7 @@ local plugins = {
             -- refer to the configuration section below
         },
     },
-    {
-        'nvim-treesitter/nvim-treesitter',
-        build = function()
-            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
-            ts_update()
-        end,
-    },
+    { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
     'nvim-treesitter/playground',
     'theprimeagen/harpoon',
     'mbbill/undotree',
@@ -57,21 +51,6 @@ local plugins = {
     { "hrsh7th/cmp-buffer" },
     { "hrsh7th/cmp-path" },
     { 'L3MON4D3/LuaSnip' }, -- Required
-    -- {
-    --     'VonHeikemen/lsp-zero.nvim',
-    --     branch = 'v2.x',
-    --     dependencies = {
-    --         -- LSP Support
-    --         { 'neovim/nvim-lspconfig' },             -- Required
-    --         { 'williamboman/mason.nvim' },           -- Optional
-    --         { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-    --
-    --         -- Autocompletion
-    --         { 'hrsh7th/nvim-cmp' },     -- Required
-    --         { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-    --     }
-    -- },
-
     "github/copilot.vim",
     {
         'nvim-lualine/lualine.nvim',
@@ -114,19 +93,6 @@ local plugins = {
             { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>",    desc = "Todo/Fix/Fixme" },
         },
     },
-    -- { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
-    -- {
-    --     "nvim-tree/nvim-tree.lua",
-    --     version = "*",
-    --     lazy = false,
-    --     dependencies = {
-    --         "nvim-tree/nvim-web-devicons",
-    --     },
-    --     config = function()
-    --         require("nvim-tree").setup {}
-    --     end,
-    -- }
-
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -135,7 +101,6 @@ local plugins = {
     'petertriho/nvim-scrollbar',
     {
         "windwp/nvim-ts-autotag",
-        -- event = "LazyFile",
         opts = {},
     },
     {
@@ -164,8 +129,8 @@ local plugins = {
         },
         main = "ibl",
     },
-    "hiphish/rainbow-delimiters.nvim"
-    ,
+    -- "hiphish/rainbow-delimiters.nvim"
+    -- ,
     {
         "echasnovski/mini.indentscope",
         version = false, -- wait till new 0.7.0 release to put it back on semver

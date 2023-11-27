@@ -1,6 +1,7 @@
 --set leader to space
-vim.g.mapleader = " "--set space+pv to eexit to explorer
+vim.g.mapleader = " " --set space+pv to eexit to explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set('n', '<leader>fe', "<cmd>Neotree toggle<CR>")
 --move selected lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

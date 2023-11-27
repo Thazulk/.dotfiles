@@ -13,6 +13,10 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 local plugins = {
     {
+        "nvim-telescope/telescope-file-browser.nvim",
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    },
+    {
         'nvim-telescope/telescope.nvim',
         dependencies = { { 'nvim-lua/plenary.nvim' },
             { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
@@ -184,6 +188,16 @@ local plugins = {
         keys = {
             { "<leader>sr", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
         },
+    },
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+            -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+        }
     }
 
 }

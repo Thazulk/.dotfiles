@@ -49,7 +49,11 @@ end)
 require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {
-        'ansiblels', 'volar', 'yamlls', 'tsserver', 'tailwindcss',
+        'ansiblels',
+        'volar',
+        'yamlls',
+        'tsserver',
+        'tailwindcss',
         'rust_analyzer',
         'lua_ls',
         'jsonls',

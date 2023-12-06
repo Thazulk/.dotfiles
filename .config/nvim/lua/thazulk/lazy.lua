@@ -42,8 +42,12 @@ local plugins = {
     },
     { "nvim-treesitter/nvim-treesitter",  build = ":TSUpdate" },
     'nvim-treesitter/playground',
-    'theprimeagen/harpoon',
     'mbbill/undotree',
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
     'tpope/vim-fugitive',
     "nvim-treesitter/nvim-treesitter-context",
     { 'williamboman/mason.nvim' },
@@ -107,34 +111,32 @@ local plugins = {
         "windwp/nvim-ts-autotag",
         opts = {},
     },
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        opts = {
-            indent = {
-                char = "│",
-                tab_char = "│",
-            },
-            scope = { enabled = false },
-            exclude = {
-                filetypes = {
-                    "help",
-                    "alpha",
-                    "dashboard",
-                    "neo-tree",
-                    "Trouble",
-                    "trouble",
-                    "lazy",
-                    "mason",
-                    "notify",
-                    "toggleterm",
-                    "lazyterm",
-                },
-            },
-        },
-        main = "ibl",
-    },
-    -- "hiphish/rainbow-delimiters.nvim"
-    -- ,
+    -- {
+    --     "lukas-reineke/indent-blankline.nvim",
+    --     opts = {
+    --         indent = {
+    --             char = "│",
+    --             tab_char = "│",
+    --         },
+    --         scope = { enabled = false },
+    --         exclude = {
+    --             filetypes = {
+    --                 "help",
+    --                 "alpha",
+    --                 "dashboard",
+    --                 "neo-tree",
+    --                 "Trouble",
+    --                 "trouble",
+    --                 "lazy",
+    --                 "mason",
+    --                 "notify",
+    --                 "toggleterm",
+    --                 "lazyterm",
+    --             },
+    --         },
+    --     },
+    --     main = "ibl",
+    -- },
     {
         "echasnovski/mini.indentscope",
         version = false, -- wait till new 0.7.0 release to put it back on semver
@@ -198,6 +200,13 @@ local plugins = {
             "MunifTanjim/nui.nvim",
             -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         }
+    },
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        opts = {},
     }
 
 }

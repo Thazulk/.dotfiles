@@ -31,13 +31,14 @@ require('telescope').setup {
     }
 }
 
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
-vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
-vim.keymap.set('n', '<leader>pb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>pg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Find Files' })
+vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Git Commits' })
+vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = 'Git Branches' })
+vim.keymap.set('n', '<leader>pb', builtin.buffers, { desc = 'Buffers' })
+vim.keymap.set('n', '<leader>pg', builtin.live_grep, { desc = 'Live Grep' })
 vim.keymap.set('n', '<leader>ps', function()
     builtin.grep_string({ search = vim.fn.input("Grep > ") });
-end)
+end, { desc = 'Grep String' })
 -- open file_browser with the path of the current buffer
-vim.keymap.set('n', "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", {})
+vim.keymap.set('n', "<space>fb", ":Telescope file_browser path=%:p:h select_buffer=true<CR>",
+    { desc = 'File Browser - Telescope' })

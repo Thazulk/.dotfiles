@@ -1,3 +1,8 @@
+require('nvim-highlight-colors').setup {
+    enable_named_colors = true,
+    enable_tailwind = true,
+}
+
 require('rose-pine').setup({
     --- @usage 'auto'|'main'|'moon'|'dawn'
     variant = 'auto',

@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias fe-up="docker compose -f docker-compose-dev.yml up"
-alias nvimcfg="cd ~/.config/nvim"
+alias dotfiles="cd ~/.dotfiles"
 alias vim="nvim ."
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

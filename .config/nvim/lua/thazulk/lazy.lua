@@ -201,7 +201,7 @@ local plugins = {
             -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         }
     },
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -211,12 +211,18 @@ local plugins = {
     {
         "NeogitOrg/neogit",
         dependencies = {
-            "nvim-lua/plenary.nvim", -- required
+            "nvim-lua/plenary.nvim",         -- required
             "nvim-telescope/telescope.nvim", -- optional
-            "sindrets/diffview.nvim", -- optional
-            "ibhagwan/fzf-lua",      -- optional
+            "sindrets/diffview.nvim",        -- optional
+            "ibhagwan/fzf-lua",              -- optional
         },
         config = true
+    },
+    'brenoprata10/nvim-highlight-colors',
+    { 'mfussenegger/nvim-dap' },
+    {
+        'stevearc/conform.nvim',
+        opts = {},
     }
 
 }

@@ -4,6 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -70,11 +71,16 @@ ZSH_THEME="spaceship"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions vi-mode)
 
 
 source $ZSH/oh-my-zsh.sh
 
+MODE_INDICATOR="%F{white}+%f"
+INSERT_MODE_INDICATOR="%F{yellow}+%f"
+
+PROMPT="$PROMPT\$(vi_mode_prompt_info)"
+RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -123,3 +129,5 @@ PROMPT='%{$fg[yellow]%}[%*] '$PROMPT
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Enable vi mode
+bindkey -v

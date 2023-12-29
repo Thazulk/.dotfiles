@@ -10,8 +10,15 @@ conform.setup({
         -- Conform will run multiple formatters sequentially
         python = { "isort", "black" },
         -- Use a sub-list to run only the first available formatter
-        javascript = { { "prettierd", "prettier" } },
+        javascript = { { "prettierd", "prettier" }, },
+        typescript = { { "prettierd", "prettier" } },
+        html = { { "prettierd", "prettier" } },
+        css = { { "prettierd", "prettier" } },
+        json = { { "prettierd", "prettier" } },
+        markdown = { { "prettierd", "prettier" } },
+        yaml = { { "prettierd", "prettier" } },
     },
+
 })
 vim.keymap.set("", "<leader>f", function()
     require("conform").format({ async = true, lsp_fallback = true })

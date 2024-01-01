@@ -42,5 +42,13 @@ require('gitsigns').setup {
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
         vim.keymap.set('n', '<leader>tb', require('gitsigns').toggle_current_line_blame,
             { buffer = bufnr, desc = '[T]oggle [B]lame' })
+        vim.keymap.set('n', '<leader>hs', require('gitsigns').stage_hunk, { buffer = bufnr, desc = '[H]unk [S]tage' })
+        vim.keymap.set('n', '<leader>hu', require('gitsigns').undo_stage_hunk, { buffer = bufnr, desc = '[H]unk [U]ndo' })
+        vim.keymap.set('n', '<leader>hr', require('gitsigns').reset_hunk, { buffer = bufnr, desc = '[H]unk [R]eset' })
+        vim.keymap.set('n', '<leader>hR', require('gitsigns').reset_buffer,
+            { buffer = bufnr, desc = 'Buffer [H]unk [R]eset' })
+        vim.keymap.set('n', '<leader>hS', require('gitsigns').stage_buffer,
+            { buffer = bufnr, desc = 'Buffer [H]unk [S]tage' })
     end,
+
 }

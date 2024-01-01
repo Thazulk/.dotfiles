@@ -200,7 +200,7 @@ local plugins = {
             -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         }
     },
-    { "catppuccin/nvim",      name = "catppuccin", priority = 1000 },
+    { "catppuccin/nvim",      name = "catppuccin",                       priority = 1000 },
     {
         "folke/tokyonight.nvim",
         lazy = false,
@@ -218,11 +218,17 @@ local plugins = {
         config = true
     },
     'brenoprata10/nvim-highlight-colors',
+    { "folke/neodev.nvim",    opts = {} },
+    { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
     { 'mfussenegger/nvim-dap' },
     {
         'stevearc/conform.nvim',
         opts = {},
-    }
+    },
+    { 'wakatime/vim-wakatime', lazy = false }
+
+
+
 
 }
 

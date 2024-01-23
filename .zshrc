@@ -131,3 +131,8 @@ PROMPT='%{$fg[yellow]%}[%*] '$PROMPT
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Enable vi mode
 bindkey -v
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+

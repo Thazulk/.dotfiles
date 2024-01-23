@@ -225,7 +225,12 @@ local plugins = {
         'stevearc/conform.nvim',
         opts = {},
     },
-    { 'wakatime/vim-wakatime', lazy = false }
+    { 'wakatime/vim-wakatime',   lazy = false },
+    {
+        'stevearc/dressing.nvim',
+        opts = {},
+    },
+    { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' }
 
 
 

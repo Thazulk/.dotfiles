@@ -28,8 +28,17 @@ require('telescope').setup {
                 find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
             },
         },
-    }
+    },
+    extensions = {
+        ['ui-select'] = {
+            require('telescope.themes').get_dropdown(),
+        },
+    },
 }
+
+-- Enable telescope extensions, if they are installed
+pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, 'ui-select')
 
 vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = 'Find Files' })
 vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Git Commits' })

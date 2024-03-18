@@ -1,8 +1,8 @@
-vim.filetype.add({
-	extension = {
-		mdx = "mdx",
-	},
-	-- pattern = {
-	-- 	"*.mdx",
-	-- },
-})
+-- vim.filetype.add({
+-- 	extension = {
+-- 		mdx = "mdx",
+-- 	},
+-- 	-- pattern = {
+-- 	-- 	"*.mdx",
+-- 	-- },
+-- })

@@ -56,5 +56,5 @@ return {
 			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 		end,
 	},
-	vim.treesitter.language.register("markdown", "mdx"),
+	-- vim.treesitter.language.register("markdown", "mdx"),
 }

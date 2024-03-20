@@ -35,5 +35,17 @@ require("bufferline").setup({
 		enforce_regular_tabs = false,
 		always_show_bufferline = true,
 		sort_by = "extension",
+		-- hide in neo-tree
+		custom_filter = function(buf_number)
+			-- Filter out by buffer name
+			if vim.fn.bufname(buf_number):match("neo-tree") then
+				return false
+			end
+			-- Filter out by buffer type
+			if vim.bo[buf_number].buftype ~= "" then
+				return false
+			end
+			return true
+		end,
 	},
 })

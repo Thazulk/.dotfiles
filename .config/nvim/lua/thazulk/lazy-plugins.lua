@@ -147,6 +147,7 @@ require("lazy").setup({
 	require("thazulk/plugins/typescript-tools"),
 	require("thazulk/plugins/treesitter"),
 	require("thazulk/plugins/copilot-chat"),
+	require("thazulk/plugins/neotest"),
 }, {
 	ui = {
 		-- If you have a Nerd Font, set icons to an empty table which will use the

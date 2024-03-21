@@ -51,10 +51,8 @@ require("lazy").setup({
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
-	"tpope/vim-fugitive",
 	"nvim-treesitter/nvim-treesitter-context",
 	-- Required
-	"github/copilot.vim",
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons", lazy = true },
@@ -77,36 +75,13 @@ require("lazy").setup({
 		opts = {},
 	},
 	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {},
-		dependencies = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
-		},
-	},
-	{
 		"nvim-pack/nvim-spectre",
 		build = false,
 		cmd = "Spectre",
 		opts = { open_cmd = "noswapfile vnew" },
-        -- stylua: ignore
-        keys = {
-            { "<leader>sp", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
-        },
-	},
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		-- stylua: ignore
+		keys = {
+			{ "<leader>sp", function() require("spectre").open() end, desc = "Replace in files (Spectre)" },
 		},
 	},
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
@@ -131,23 +106,10 @@ require("lazy").setup({
 	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } },
 	{ "mfussenegger/nvim-dap" },
 	{ "wakatime/vim-wakatime", lazy = false },
-	{
-		"stevearc/dressing.nvim",
-		opts = {},
-	},
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-	require("thazulk/plugins/gitsigns"),
-	require("thazulk/plugins/which-key"),
-	require("thazulk/plugins/telescope"),
-	require("thazulk/plugins/lspconfig"),
-	require("thazulk/plugins/conform"),
-	require("thazulk/plugins/cmp"),
-	require("thazulk/plugins/todo-comments"),
-	require("thazulk/plugins/mini"),
-	require("thazulk/plugins/typescript-tools"),
-	require("thazulk/plugins/treesitter"),
-	require("thazulk/plugins/copilot-chat"),
-	require("thazulk/plugins/neotest"),
+	{ "MunifTanjim/nui.nvim", lazy = true },
+	-- Additional plugins:
+	require("thazulk.plugins"),
 }, {
 	ui = {
 		-- If you have a Nerd Font, set icons to an empty table which will use the

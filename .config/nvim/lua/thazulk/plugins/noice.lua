@@ -9,6 +9,11 @@ return {
 					["vim.lsp.util.stylize_markdown"] = true,
 					["cmp.entry.get_documentation"] = true,
 				},
+				hover = {
+					-- Set not show a message if hover is not available
+					-- ex: shift+k on Typescript code
+					silent = true,
+				},
 			},
 			routes = {
 				{
@@ -22,6 +27,14 @@ return {
 					},
 					view = "mini",
 				},
+				-- Filter out "No information available"
+				-- {
+				-- 	filter = {
+				-- 		event = "notify",
+				-- 		find = "No information available",
+				-- 	},
+				-- 	opts = { skip = true },
+				-- },
 			},
 			presets = {
 				bottom_search = true,

@@ -109,7 +109,8 @@ RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
 
 alias fe-up="docker compose -f docker-compose-dev.yml up"
 alias dotfiles="cd ~/.dotfiles"
-alias vim="nvim ."
+alias nvim="nvim ."
+alias lazy='NVIM_APPNAME="nvim-lazyvim" nvim .'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -136,3 +137,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

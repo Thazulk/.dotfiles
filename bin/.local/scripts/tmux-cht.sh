@@ -4,7 +4,10 @@ if [[ -z $selected ]]; then
     exit 0
 fi
 
-read -p "Enter Query: " query
+# read user input with a prompt in zsh
+echo -n "Enter Query: "
+read query 
+# read -p "Enter Query: " query 
 
 if grep -qs "$selected" ~/.tmux-cht-languages; then
     query=`echo $query | tr ' ' '+'`

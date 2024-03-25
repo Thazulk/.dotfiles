@@ -25,7 +25,8 @@ return {
 					auto_trigger = true,
 					debounce = 75,
 					keymap = {
-						accept = "<M-l>",
+						-- shift+tab accepts the current completions
+						accept = "<S-Tab>",
 						accept_word = false,
 						accept_line = false,
 						next = "<M-ú>",

@@ -20,4 +20,6 @@ return {
 	require("thazulk.plugins.copilot"),
 	require("thazulk.plugins.copliot-cmp"),
 	require("thazulk.plugins.copilot-chat"),
+	require("thazulk.plugins.debug"),
+	require("thazulk.plugins.tailwindcss"),
 }

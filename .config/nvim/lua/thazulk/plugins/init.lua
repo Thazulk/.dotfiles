@@ -1,4 +1,6 @@
 return {
+
+	require("thazulk.plugins.noice"),
 	require("thazulk.plugins.gitsigns"),
 	require("thazulk.plugins.which-key"),
 	require("thazulk.plugins.telescope"),
@@ -15,11 +17,10 @@ return {
 	require("thazulk.plugins.treesitter-textobjects"),
 	require("thazulk.plugins.notify"),
 	require("thazulk.plugins.dressing"),
-	require("thazulk.plugins.noice"),
-	require("thazulk.plugins.treesitter-textobjects"),
 	require("thazulk.plugins.copilot"),
 	require("thazulk.plugins.copliot-cmp"),
 	require("thazulk.plugins.copilot-chat"),
 	require("thazulk.plugins.debug"),
 	require("thazulk.plugins.tailwindcss"),
+	require("thazulk.plugins.persistence"),
 }

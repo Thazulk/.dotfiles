@@ -110,7 +110,7 @@ RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
 alias fe-up="docker compose -f docker-compose-dev.yml up"
 alias dotfiles="cd ~/.dotfiles"
 alias nvim="nvim ."
-alias lazy='NVIM_APPNAME="nvim-lazyvim" nvim .'
+alias lazy='NVIM_APPNAME="nvim-lazy" nvim .'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -42,7 +42,9 @@ return {
 			local chat = require("CopilotChat")
 			local select = require("CopilotChat.select")
 			-- Use unnamed register for the selection
-			opts.selection = select.unnamed
+			-- opts.selection = select.unnamed
+			-- Use visual selection for the selection
+			opts.selection = select.visual
 
 			-- Override the git prompts message
 			opts.prompts.Commit = {

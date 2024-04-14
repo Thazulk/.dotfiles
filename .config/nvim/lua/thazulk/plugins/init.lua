@@ -23,4 +23,5 @@ return {
 	require("thazulk.plugins.debug"),
 	require("thazulk.plugins.tailwindcss"),
 	require("thazulk.plugins.persistence"),
+	require("thazulk.plugins.harpoon"),
 }

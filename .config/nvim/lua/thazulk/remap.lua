@@ -27,3 +27,5 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc =
 vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
+
+vim.keymap.set("n", "<leader>vt", "<cmd>vsplit | term<CR>", { desc = "Open vertical terminal" })

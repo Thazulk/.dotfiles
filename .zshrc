@@ -90,9 +90,9 @@ RPROMPT="\$(vi_mode_prompt_info)$RPROMPT"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+#   export EDITOR='nvim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
@@ -114,8 +114,8 @@ alias lazy='NVIM_APPNAME="nvim-lazy" nvim .'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
@@ -123,7 +123,10 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 export PATH=$HOME/.local/scripts:$PATH
 
 # bindkey -s '^f' 'nvim $(fzf)^M'
+# open tmux sessionizer with ctrl+f
 bindkey -s ^f "tmux-sessionizer\n"
+# open vscode with alt+f
+bindkey -s "^[f" "vscode-sessionizer\n"
 
 PROMT='%F{blue}%n%f@%F{red}%m%f %F{green}%~%f %# '
 PROMPT='%{$fg[yellow]%}[%*] '$PROMPT

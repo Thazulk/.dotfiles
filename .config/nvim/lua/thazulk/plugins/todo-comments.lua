@@ -1,13 +1,13 @@
 -- Highlight todo, notes, etc in comments
 return {
-	{
-		"folke/todo-comments.nvim",
-		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
-		cmd = { "TodoTrouble", "TodoTelescope" },
-		-- event = "LazyFile",
-		config = true,
+  {
+    'folke/todo-comments.nvim',
+    event = 'VimEnter',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = { signs = false },
+    cmd = { 'TodoTrouble', 'TodoTelescope' },
+    -- event = "LazyFile",
+    config = true,
         -- stylua: ignore
         keys = {
             { "]t",         function() require("todo-comments").jump_next() end, desc = "Next todo comment" },
@@ -17,5 +17,5 @@ return {
             { "<leader>st", "<cmd>TodoTelescope<cr>",                            desc = "Todo" },
             { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>",    desc = "Todo/Fix/Fixme" },
         },
-	},
+  },
 }

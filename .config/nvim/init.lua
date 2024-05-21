@@ -1,1 +1,1 @@
-require("thazulk")
+require 'thazulk'

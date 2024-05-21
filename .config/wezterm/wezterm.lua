@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 local config = wezterm.config_builder()
 
@@ -22,5 +23,6 @@ config.font = wezterm.font_with_fallback({
 	"Monospace",
 })
 config.font_size = 11
-
+config.allow_win32_input_mode = false
+config.keys = { { key = " ", mods = "CTRL", action = act.SendKey({ key = " ", mods = "CTRL" }) } }
 return config

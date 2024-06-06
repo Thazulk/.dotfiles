@@ -19,38 +19,38 @@ return {
         end
 
         require('telescope.pickers')
-          .new({}, {
-            prompt_title = 'Harpoon',
-            finder = require('telescope.finders').new_table {
-              results = file_paths,
-            },
-            previewer = conf.file_previewer {},
-            sorter = conf.generic_sorter {},
-          })
-          :find()
+            .new({}, {
+              prompt_title = 'Harpoon',
+              finder = require('telescope.finders').new_table {
+                results = file_paths,
+              },
+              previewer = conf.file_previewer {},
+              sorter = conf.generic_sorter {},
+            })
+            :find()
       end
 
-      vim.keymap.set('n', '<C-h>', function()
+      vim.keymap.set("n", "<C-h>", function()
         toggle_telescope(harpoon:list())
-      end, { desc = 'Open harpoon window' })
+      end, { desc = "Open harpoon window" })
     end,
     keys = function()
       local keys = {
         {
-          '<leader>a',
+          "<leader>a",
           function()
-            require('harpoon'):list():add()
+            require("harpoon"):list():add()
           end,
-          desc = 'Harpoon File',
+          desc = "Harpoon File",
         },
-        -- {
-        -- 	"<C-h>",
-        -- 	function()
-        -- 		local harpoon = require("harpoon")
-        -- 		harpoon.ui:toggle_quick_menu(harpoon:list())
-        -- 	end,
-        -- 	desc = "Harpoon Quick Menu",
-        -- },
+        {
+          "<leader>hm",
+          function()
+            local harpoon = require("harpoon")
+            harpoon.ui:toggle_quick_menu(harpoon:list())
+          end,
+          desc = "Harpoon Quick Menu",
+        },
       }
 
       for i = 1, 5 do

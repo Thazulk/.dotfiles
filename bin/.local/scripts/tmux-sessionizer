@@ -3,7 +3,15 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find  ~/ ~/projects ~/projects/github.com/Thazulk ~/work/ ~/work/digitlean/ ~/learn/ ~/personal/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    directories=(~/ ~/projects ~/projects/github.com/Thazulk ~/work/ ~/workspace/github.com/Thazulk/ ~/workspace/github.com/ ~/work/digitlean/ ~/learn/ ~/personal/)
+    existing_dirs=()
+    selected=""
+    for dir in "${directories[@]}"; do
+        if [ -d "$dir" ]; then
+            existing_dirs+=("$dir")
+        fi
+    done
+    selected+=$(find $existing_dirs -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then

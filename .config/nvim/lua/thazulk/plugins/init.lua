@@ -26,4 +26,5 @@ return {
   require 'thazulk.plugins.harpoon',
   require 'thazulk.plugins.bufferline',
   require 'thazulk.plugins.trouble',
+  require 'thazulk.plugins.nvim-metals',
 }

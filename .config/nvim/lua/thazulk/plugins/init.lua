@@ -27,4 +27,5 @@ return {
   require 'thazulk.plugins.bufferline',
   require 'thazulk.plugins.trouble',
   require 'thazulk.plugins.nvim-metals',
+  require 'thazulk.plugins.toggleterm',
 }

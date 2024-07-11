@@ -28,3 +28,5 @@ vim.keymap.set('n', '<leader><leader>', function()
 end)
 
 vim.keymap.set('n', '<leader>vt', '<cmd>vsplit | term<CR>', { desc = 'Open vertical terminal' })
+-- toggleterm map ESC to exit terminal mode
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })

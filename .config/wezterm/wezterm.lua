@@ -3,7 +3,7 @@ local act = wezterm.action
 
 local config = wezterm.config_builder()
 
-config.color_scheme = "Tokyo Night Storm"
+config.color_scheme = "Tokyo Night Moon"
 
 config.window_padding = {
 	left = 0,

@@ -6,11 +6,6 @@ setopt HIST_IGNORE_SPACE  # Don't save when prefixed with space
 setopt HIST_IGNORE_DUPS   # Don't save duplicate lines
 setopt SHARE_HISTORY      # Share history between sessions
 
-set -o vi
-
-export VISUAL=nvim
-export EDITOR=nvim
-export TERM="tmux-256color"
 
 
 # plugins
@@ -24,7 +19,7 @@ prompt pure
 # Git aliases
 alias gst='git status'
 alias gf='git fetch'
-alias gcan!='git commit --amend --no-edit'
+alias gcan!='git commit -v -a --no-edit --amend'
 alias gpl='git pull'
 alias gaa='git add .'
 alias gcm='git commit -m'
@@ -34,15 +29,28 @@ alias gbr='git branch'
 alias gsw='git switch'
 alias gswc='git switch -c'
 
+# finds all files recursively and sorts by last modification, ignore hidden files
+alias lastmod='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
+
+# yay
+alias yu="yay -Syu"
+
 alias fe-up="docker compose -f docker-compose-dev.yml up"
 alias dotfiles="cd ~/.dotfiles"
 alias nvim="nvim ."
-alias lazy='NVIM_APPNAME="lazy-nvim" nvim .'
+alias v='NVIM_APPNAME="lazy-nvim" nvim .'
+
+set -o vi
+
+export VISUAL='NVIM_APPNAME="lazy-nvim" nvim'
+export EDITOR='NVIM_APPNAME="lazy-nvim" nvim'
+export TERM="tmux-256color"
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export EDITOR=/usr/bin/nvim
-export VISUAL=/usr/bin/nvim
+# export EDITOR=/usr/bin/nvim
+# export VISUAL=/usr/bin/nvim
 
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go

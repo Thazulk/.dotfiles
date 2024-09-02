@@ -28,6 +28,10 @@ return {
     dim_inactive = false, -- dims inactive windows
     lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 
+    --- You can override specific color groups to use other groups or a hex color
+    --- function will be called with a ColorScheme table
+    ---@param colors ColorScheme
+    on_colors = function(colors) end,
     on_highlights = function(hl, c)
       local prompt = "#2d3149"
       hl.TelescopeNormal = {

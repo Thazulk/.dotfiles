@@ -83,3 +83,10 @@ case ":$PATH:" in
 esac
 # pnpm end
 export PATH=$PATH:$HOME/go/bin
+
+# fnm
+FNM_PATH="/home/thazulk/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/thazulk/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi

@@ -35,8 +35,12 @@ alias lastmod='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 # yay
 alias yu="yay -Syu"
 
+# docker
 alias fe-up="docker compose -f docker-compose-dev.yml up"
-alias dotfiles="cd ~/.dotfiles"
+alias vimbegood="docker run -it brandoncc/vim-be-good:latest"
+
+
+#Neovim
 alias nvim="nvim ."
 alias v='NVIM_APPNAME="lazy-nvim" nvim .'
 
@@ -90,3 +94,6 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="/home/thazulk/.local/share/fnm:$PATH"
   eval "`fnm env`"
 fi
+
+#Tmux
+alias tks="tmux kill-server"

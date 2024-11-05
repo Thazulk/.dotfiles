@@ -27,5 +27,5 @@ config.font = wezterm.font_with_fallback({
 config.font_size = 10
 config.allow_win32_input_mode = false
 config.keys = { { key = " ", mods = "CTRL", action = act.SendKey({ key = " ", mods = "CTRL" }) } }
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.85
 return config

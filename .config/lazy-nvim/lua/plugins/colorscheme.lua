@@ -9,6 +9,7 @@ return {
         sidebars = "transparent",
         floats = "transparent",
       },
+      sidebars = {},
     },
     -- require("tokyonight").setup({
     --   style = "moon", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`

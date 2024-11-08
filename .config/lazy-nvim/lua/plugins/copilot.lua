@@ -1,14 +1,5 @@
 return {
   "zbirenbaum/copilot.lua",
-  opts = {
-    suggestion = { enabled = false },
-    panel = { enabled = false },
-    filetypes = {
-      -- ["*"] = false,
-      markdown = true,
-      help = true,
-    },
-  },
   keys = {
     {
       "<leader>at",

@@ -16,14 +16,13 @@ config.window_padding = {
 
 config.hide_tab_bar_if_only_one_tab = true
 
-config.font = wezterm.font("JetBrains Mono Nerd")
-
-config.font = wezterm.font_with_fallback({
-	-- "FiraCode Nerd Font Mono",
-	"JetBrains Mono",
-	-- "DejaVu Sans Mono",
-	-- "Monospace",
-})
+config.font = wezterm.font("JetBrainsMono Nerd Font")
+-- config.font = wezterm.font_with_fallback({
+-- 	-- "FiraCode Nerd Font Mono",
+-- 	-- "JetBrains Mono Nerd Font",
+-- 	-- "DejaVu Sans Mono",
+-- 	-- "Monospace",
+-- })
 config.font_size = 10
 config.allow_win32_input_mode = false
 config.keys = { { key = " ", mods = "CTRL", action = act.SendKey({ key = " ", mods = "CTRL" }) } }

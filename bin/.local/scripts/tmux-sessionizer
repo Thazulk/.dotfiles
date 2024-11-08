@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    directories=(~/ ~/projects ~/projects/github.com/Thazulk ~/work/ ~/workspace/github.com/Thazulk/ ~/workspace/github.com/ ~/work/digitlean/ ~/learn/ ~/personal/)
+    directories=(~/ ~/projects/ ~/projects/github.com/ ~/work/ ~/work/digitlean/ ~/learn/ ~/personal/ ~/workspace/*)
     existing_dirs=()
     selected=""
     for dir in "${directories[@]}"; do

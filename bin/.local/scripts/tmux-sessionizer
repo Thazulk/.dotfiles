@@ -1,44 +1,68 @@
 #!/usr/bin/env zsh
 
+# Enable NULL_GLOB to allow globs that do not match any files to expand to an empty list
+setopt NULL_GLOB
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    directories=(~/ ~/projects/ ~/projects/github.com/ ~/work/ ~/work/digitlean/ ~/learn/ ~/personal/ ~/workspace/*)
+    # List of directories to search without expanding wildcards prematurely
+    directories=(~ ~/projects ~/projects/github.com ~/work ~/work/digitlean ~/learn ~/personal ~/workspace/*)
     existing_dirs=()
     selected=""
+
+    # Loop through directories and add only existing paths to existing_dirs
     for dir in "${directories[@]}"; do
-        if [ -d "$dir" ]; then
-            if [ "$dir" = "~/projects/github.com/Thazulk" ]; then
-                selected+=$(find "$dir" -mindepth 1 -maxdepth 2 -type d | fzf)
-            else
-                existing_dirs+=("$dir")
-            fi
+        # Expand ~ to home directory
+        expanded_dir=${dir/#\~/$HOME}
+
+        # If the path contains a wildcard, expand it explicitly
+        if [[ "$expanded_dir" == *"*"* ]]; then
+            for subdir in $expanded_dir; do
+                # Add only existing directories from the wildcard expansion
+                if [ -d "$subdir" ]; then
+                    existing_dirs+=("$subdir")
+                fi
+            done
+        elif [ -d "$expanded_dir" ]; then
+            # Add non-wildcard directories if they exist
+            existing_dirs+=("$expanded_dir")
         fi
     done
+
+    # Fallback: Use fzf to select a directory if no specific selection was made
     if [ -z "$selected" ]; then
         selected+=$(find $existing_dirs -mindepth 1 -maxdepth 1 -type d | fzf)
     fi
 fi
 
+# Disable NULL_GLOB to restore default behavior
+unsetopt NULL_GLOB
+
+# Exit if no directory was selected
 if [[ -z $selected ]]; then
     exit 0
 fi
 
+# Get basename of selected directory for naming tmux session
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
+# Start or attach to tmux session
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected
     exit 0
 fi
 
+# Check if session exists, else create it
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
 fi
 
-# tmux switch-client -t $selected_name
-# attach to existing tmux session
+# Attach to existing tmux session
 if [[ -n $TMUX ]]; then
     tmux switch-client -t $selected_name
-    exit 0
+else
+    tmux attach-session -t $selected_name
 fi
+

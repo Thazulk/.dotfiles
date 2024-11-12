@@ -18,7 +18,7 @@ config.hide_tab_bar_if_only_one_tab = true
 
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 -- config.font = wezterm.font_with_fallback({
--- 	-- "FiraCode Nerd Font Mono",
+-- 	-- "Font Awesome 5 Free",
 -- 	-- "JetBrains Mono Nerd Font",
 -- 	-- "DejaVu Sans Mono",
 -- 	-- "Monospace",

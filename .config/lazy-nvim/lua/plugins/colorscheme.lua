@@ -11,8 +11,15 @@ local function set_highlights()
 end
 
 -- Apply the highlights after all plugins have been loaded
-vim.api.nvim_create_autocmd("User", {
-  pattern = "LazyVimStarted",
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = "LazyVimStarted",
+--   callback = set_highlights,
+-- })
+--
+
+-- Apply the highlights after the colorscheme has been loaded
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
   callback = set_highlights,
 })
 

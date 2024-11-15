@@ -41,13 +41,14 @@ alias vimbegood="docker run -it brandoncc/vim-be-good:latest"
 
 
 #Neovim
-alias nvim="nvim ."
-alias v='NVIM_APPNAME="lazy-nvim" nvim .'
+alias v="nvim ."
+alias sv="sudo nvim "
+# alias v='NVIM_APPNAME="lazy-nvim" nvim .'
 
 set -o vi
 
-export VISUAL='NVIM_APPNAME="lazy-nvim" nvim'
-export EDITOR='NVIM_APPNAME="lazy-nvim" nvim'
+export VISUAL='nvim'
+export EDITOR='nvim'
 export TERM="tmux-256color"
 
 export NVM_DIR="$HOME/.nvm"

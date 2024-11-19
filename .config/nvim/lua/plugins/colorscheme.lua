@@ -67,32 +67,27 @@ return {
       -- end,
     },
   }, -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
+  { "ellisonleao/gruvbox.nvim", opts = {
+    transparent_mode = true,
+  } },
 
   --add rose-pine
-  -- {
-  --   "rose-pine/neovim",
-  --   name = "rose-pine",
-  --   opts = {
-  --     styles = {
-  --       bold = true,
-  --       italic = false,
-  --       transparency = false,
-  --     },
-  --   },
-  -- },
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    opts = {
+      styles = {
+        bold = true,
+        italic = false,
+        transparency = true,
+      },
+    },
+  },
 
   {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "tokyonight",
     },
-    vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { bg = "none" }),
-    vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { bg = "none" }),
-    vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { bg = "none" }),
-    vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { bg = "none" }),
-
-    -- Set highlights for inlay hints to make them transparent
-    vim.api.nvim_set_hl(0, "LspInlayHint", { bg = "none" }),
   },
 }

@@ -4,6 +4,7 @@ wezterm.log_info("reloading")
 local act = wezterm.action
 
 require("links").setup(config)
+require("zen-mode")
 
 config.color_scheme = "Tokyo Night Moon"
 

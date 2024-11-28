@@ -7,7 +7,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     # List of directories to search without expanding wildcards prematurely
-    directories=(~ ~/projects ~/projects/github.com ~/work ~/work/digitlean ~/learn ~/personal ~/workspace/*)
+    directories=(~ ~/projects ~/projects/github.com ~/work ~/work/digitlean ~/learn ~/personal ~/workspace/* ~/workspace/github.com/* ~/workspace/github.com/Thazulk/lab)
     existing_dirs=()
     selected=""
 

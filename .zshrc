@@ -45,6 +45,9 @@ alias v="nvim ."
 alias sv="sudo nvim "
 # alias v='NVIM_APPNAME="lazy-nvim" nvim .'
 
+#Kubectl
+alias k="kubectl"
+
 set -o vi
 
 export VISUAL='nvim'
@@ -98,3 +101,7 @@ fi
 
 #Tmux
 alias tks="tmux kill-server"
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/home/thazulk/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

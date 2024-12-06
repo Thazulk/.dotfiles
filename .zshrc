@@ -16,6 +16,9 @@ fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 
+#zsh completion
+  fpath=($HOME/zsh-completions/src $fpath)
+
 # Git aliases
 alias gst='git status'
 alias gf='git fetch'
@@ -48,6 +51,8 @@ alias sv="sudo nvim "
 #Kubectl
 alias k="kubectl"
 
+
+#Tmux 
 set -o vi
 
 export VISUAL='nvim'
@@ -105,3 +110,7 @@ alias tks="tmux kill-server"
 ### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
 export PATH="/home/thazulk/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+#
+
+source <(kubectl completion zsh)
+compdef __start_kubectl k

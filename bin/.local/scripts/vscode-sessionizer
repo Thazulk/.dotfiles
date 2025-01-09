@@ -24,7 +24,7 @@ else
     for dir in "${base_dirs[@]}"; do
         [[ -d "$dir" ]] && all_dirs+=("$dir")
         
-        for subdir in "$dir"/*(N/); do
+        for subdir in "$dir"/*(ND/); do
             [[ -d "$subdir" ]] && all_dirs+=("$subdir")
         done
     done

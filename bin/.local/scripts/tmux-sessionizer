@@ -1,73 +1,53 @@
 #!/usr/bin/env zsh
 
-# Enable NULL_GLOB to allow globs that do not match any files to expand to an empty list
+setopt EXTENDED_GLOB
 setopt NULL_GLOB
 
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    # Read directories from config file
     config_file="$HOME/.dotfiles/bin/.local/scripts/sessionizer-paths.conf"
-    if [[ -f "$config_file" ]]; then
-        # Read non-empty, non-comment lines from config file
-        directories=($(grep -v '^#' "$config_file" | grep -v '^$'))
-    else
+    if [[ ! -f "$config_file" ]]; then
         echo "Config file not found at $config_file"
         exit 1
     fi
 
-    existing_dirs=()
-    selected=""
-
-    # Loop through directories and add only existing paths to existing_dirs
-    for dir in "${directories[@]}"; do
-        # Expand ~ to home directory
+    base_dirs=()
+    while IFS= read -r dir || [[ -n "$dir" ]]; do
+        [[ -z "$dir" || "$dir" =~ ^[[:space:]]*# ]] && continue
+        
         expanded_dir=${dir/#\~/$HOME}
+        base_dirs+=("$expanded_dir")
+    done < "$config_file"
 
-        # If the path contains a wildcard, expand it explicitly
-        if [[ "$expanded_dir" == *"*"* ]]; then
-            for subdir in $expanded_dir; do
-                # Add only existing directories from the wildcard expansion
-                if [ -d "$subdir" ]; then
-                    existing_dirs+=("$subdir")
-                fi
-            done
-        elif [ -d "$expanded_dir" ]; then
-            # Add non-wildcard directories if they exist
-            existing_dirs+=("$expanded_dir")
-        fi
+    all_dirs=()
+    for dir in "${base_dirs[@]}"; do
+        [[ -d "$dir" ]] && all_dirs+=("$dir")
+        
+        for subdir in "$dir"/*(N/); do
+            [[ -d "$subdir" ]] && all_dirs+=("$subdir")
+        done
     done
 
-    # Fallback: Use fzf to select a directory if no specific selection was made
-    if [ -z "$selected" ]; then
-        selected+=$(find $existing_dirs -mindepth 1 -maxdepth 1 -type d | fzf)
-    fi
+    selected=$(printf '%s\n' "${all_dirs[@]}" | sort -u | fzf)
 fi
 
-# Disable NULL_GLOB to restore default behavior
-unsetopt NULL_GLOB
+unsetopt EXTENDED_GL
 
-# Exit if no directory was selected
-if [[ -z $selected ]]; then
-    exit 0
-fi
+[[ -z "$selected" ]] && exit 0
 
-# Get basename of selected directory for naming tmux session
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-# Start or attach to tmux session
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected
     exit 0
 fi
 
-# Check if session exists, else create it
 if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds $selected_name -c $selected
 fi
 
-# Attach to existing tmux session
 if [[ -n $TMUX ]]; then
     tmux switch-client -t $selected_name
 else

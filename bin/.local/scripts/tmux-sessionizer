@@ -6,8 +6,16 @@ setopt NULL_GLOB
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    # List of directories to search without expanding wildcards prematurely
-    directories=(~ ~/projects ~/projects/github.com ~/work ~/work/digitlean ~/learn ~/personal ~/workspace/* ~/workspace/github.com/* ~/workspace/github.com/Thazulk/lab/*)
+    # Read directories from config file
+    config_file="$HOME/.dotfiles/bin/.local/scripts/sessionizer-paths.conf"
+    if [[ -f "$config_file" ]]; then
+        # Read non-empty, non-comment lines from config file
+        directories=($(grep -v '^#' "$config_file" | grep -v '^$'))
+    else
+        echo "Config file not found at $config_file"
+        exit 1
+    fi
+
     existing_dirs=()
     selected=""
 

@@ -1,5 +1,52 @@
 #!/usr/bin/env zsh
 
+# Enable NULL_GLOB to allow globs that do not match any files to expand to an empty list
+setopt NULL_GLOB
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    # Read directories from config file
+    config_file="$HOME/.dotfiles/bin/.local/scripts/sessionizer-paths.conf"
+    if [[ -f "$config_file" ]]; then
+        # Read non-empty, non-comment lines from config file
+        directories=($(grep -v '^#' "$config_file" | grep -v '^$'))
+    else
+        echo "Config file not found at $config_file"
+        exit 1
+    fi
+
+    existing_dirs=()
+    selected=""
+
+    # Loop through directories and add only existing paths to existing_dirs
+    for dir in "${directories[@]}"; do
+        # Expand ~ to home directory
+        expanded_dir=${dir/#\~/$HOME}
+
+        # If the path contains a wildcard, expand it explicitly
+        if [[ "$expanded_dir" == *"*"* ]]; then
+            for subdir in $expanded_dir; do
+                # Add only existing directories from the wildcard expansion
+                if [ -d "$subdir" ]; then
+                    existing_dirs+=("$subdir")
+                fi
+            done
+        elif [ -d "$expanded_dir" ]; then
+            # Add non-wildcard directories if they exist
+            existing_dirs+=("$expanded_dir")
+        fi
+    done
+
+    # Fallback: Use fzf to select a directory if no specific selection was made
+    if [ -z "$selected" ]; then
+        selected+=$(find $existing_dirs -mindepth 1 -maxdepth 1 -type d | fzf)
+    fi
+fi
+
+# Disable NULL_GLOB to restore default behavior
+unsetopt NULL_GLOB
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else

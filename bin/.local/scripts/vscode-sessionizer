@@ -36,7 +36,7 @@ unsetopt EXTENDED_GLOB
 unsetopt NULL_GLOB
 
 [[ -z "$selected" ]] && exit 0
-
+[[ -d "$selected" ]] && code "$selected"
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
@@ -48,8 +48,8 @@ fi
 
 if [[ -n $TMUX ]]; then
     tmux switch-client -t $selected_name
+    
 elif [[ -n $tmux_running ]]; then
     tmux attach-session -t $selected_name
 fi
 
-[[ -d "$selected" ]] && code "$selected"

@@ -32,12 +32,12 @@ else
     selected=$(printf '%s\n' "${all_dirs[@]}" | sort -u | fzf)
 fi
 
-unsetopt EXTENDED_GL
+unsetopt EXTENDED_GLOB
+unsetopt NULL_GLOB
 
 [[ -z "$selected" ]] && exit 0
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -s $selected_name -c $selected
@@ -53,4 +53,3 @@ if [[ -n $TMUX ]]; then
 else
     tmux attach-session -t $selected_name
 fi
-

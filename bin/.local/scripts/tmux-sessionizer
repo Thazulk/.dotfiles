@@ -40,7 +40,11 @@ unsetopt NULL_GLOB
 selected_name=$(basename "$selected" | tr . _)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    tmux new-session -s $selected_name -c $selected
+    if tmux has-session -t=$selected_name 2> /dev/null; then
+        tmux attach-session -t $selected_name
+    else
+        tmux new-session -s $selected_name -c $selected
+    fi
     exit 0
 fi
 

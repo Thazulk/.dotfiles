@@ -11,13 +11,16 @@ setopt SHARE_HISTORY      # Share history between sessions
 # plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+
 # zsh pure promt
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 
 #zsh completion
-  fpath=($HOME/zsh-completions/src $fpath)
+fpath=($HOME/zsh-completions/src $fpath)
+autoload -Uz compinit
+compinit
 
 # Git aliases
 alias gst='git status'

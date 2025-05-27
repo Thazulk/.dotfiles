@@ -68,11 +68,36 @@ export NVM_DIR="$HOME/.nvm"
 # export EDITOR=/usr/bin/nvim
 # export VISUAL=/usr/bin/nvim
 
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+#Experimental, working on mutli system solution
+# export GOROOT=/usr/local/go
+# export GOPATH=$HOME/go
+# export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# Custom scripts directory
 export PATH=$HOME/.local/scripts:$PATH
 
+# Go configuration - dynamic solution for cross-platform compatibility
+if command -v go >/dev/null 2>&1; then
+  export GOPATH=$(go env GOPATH 2>/dev/null || echo "$HOME/go")
+  export GOROOT=$(go env GOROOT 2>/dev/null)
+  
+  [ -d "$GOPATH/bin" ] && export PATH="$GOPATH/bin:$PATH"
+  [ -d "$GOROOT/bin" ] && export PATH="$GOROOT/bin:$PATH"
+else
+  DEFAULT_GOPATH="$HOME/go"
+  if [ -d "$DEFAULT_GOPATH" ]; then
+    export GOPATH="$DEFAULT_GOPATH"
+    [ -d "$GOPATH/bin" ] && export PATH="$GOPATH/bin:$PATH"
+    
+    for possible_goroot in /usr/local/go /usr/lib/go /opt/go; do
+      if [ -d "$possible_goroot" ] && [ -x "$possible_goroot/bin/go" ]; then
+        export GOROOT="$possible_goroot"
+        export PATH="$GOROOT/bin:$PATH"
+        break
+      fi
+    done
+  fi
+fi
 # bindkey -s '^f' 'nvim $(fzf)^M'
 # open tmux sessionizer with ctrl+f
 bindkey -s ^f "tmux-sessionizer\n"

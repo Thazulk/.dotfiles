@@ -140,5 +140,10 @@ export PATH="/home/thazulk/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 #
 
+# Start ssh-agent on login
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa 2>/dev/null
+
+
 source <(kubectl completion zsh)
 compdef __start_kubectl k

@@ -1,4 +1,5 @@
 .config/nvim/lazy-lock.json
 .config/lazy-nvim/lazy-lock.json
-bin/.local/share
-bin/.local/state
+.local/share
+.local/state
+.nvimlog

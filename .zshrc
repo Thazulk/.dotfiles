@@ -141,8 +141,8 @@ export PATH="/home/thazulk/.rd/bin:$PATH"
 #
 
 # Start ssh-agent on login
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa 2>/dev/null
+# eval "$(ssh-agent -s)"
+# ssh-add ~/.ssh/id_rsa 2>/dev/null
 
 
 source <(kubectl completion zsh)
